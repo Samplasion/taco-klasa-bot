@@ -5,11 +5,7 @@ module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
 			description: 'A taco cannot insult someone!',
-			usage: '[UserToCompliment:member]',
-      enabled: true,
-      runIn: ['text', 'dm', 'group'],
-      cooldown: 0,
-      aliases: [],
+			usage: '[UserToCompliment:member]'
 		});
 		this.compliments = [
 			'Your smile is contagious.',
