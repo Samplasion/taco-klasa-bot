@@ -12,7 +12,7 @@ module.exports = class extends Command {
             permLevel: 0,
             botPerms: [],
             requiredSettings: [],
-            description: '',
+            description: 'Sends an image of a neko',
             quotedStringSupport: false,
             usage: '',
             usageDelim: undefined,

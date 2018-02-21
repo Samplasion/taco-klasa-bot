@@ -28,7 +28,7 @@ module.exports = class extends Command {
 			.addField('❯ Server Join Date', moment(member.joinedTimestamp).format('MMMM Do YYYY'), true)
 			.addField('❯ Status', this.statuses[member.user.presence.status], true)
 			.addField('❯ Playing', member.user.presence.activity ? member.user.presence.activity.name : 'N/A', true)
-			.addField('❯ Highest Role', /*member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None'*/ member.roles.filter(r => r.id !== msg.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles", true)
+			.addField('❯ Roles', /*member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None'*/ member.roles.filter(r => r.id !== msg.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles", true)
 			.addField('❯ Hoist Role', member.hoistRole ? member.hoistRole.name : 'None', true);
 		return msg.sendEmbed(userInfo);
 	}
