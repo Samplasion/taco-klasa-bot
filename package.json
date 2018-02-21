@@ -1,0 +1,29 @@
+{
+  "name": "my-glitch-app",
+  "version": "0.0.1",
+  "description": "What am I about?",
+  "main": "server.js",
+  "scripts": {
+    "start": "node mybot.js"
+  },
+  "dependencies": {
+    "discord.js": "github:hydrabolt/discord.js",
+    "express": "^4.16.2",
+    "klasa": "^0.4.0",
+    "moment": "^2.20.1",
+    "moment-duration-format": "^2.2.2",
+    "pixabay-api": "^1.0.4"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/welcome-project"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
