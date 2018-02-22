@@ -7,7 +7,6 @@
     "start": "node mybot.js"
   },
   "dependencies": {
-    "canvas": "^1.6.9",
     "discord.js": "github:hydrabolt/discord.js",
     "express": "^4.16.2",
     "fast-html-parser": "^1.0.1",
