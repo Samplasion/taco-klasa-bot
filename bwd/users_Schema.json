@@ -1,1 +1,1 @@
-{}
+{"type":"Folder","city":{"type":"string","array":false,"default":null,"min":null,"max":null,"sql":"TEXT","configurable":true}}

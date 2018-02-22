@@ -11,7 +11,7 @@ module.exports = class extends Command {
             permLevel: 0,
             botPerms: [],
             requiredSettings: [],
-            description: 'Add a space between characters i  a string',
+            description: 'Add a space between characters in a string',
             quotedStringSupport: false,
             usage: '<stringToSpace:str>',
             usageDelim: undefined,

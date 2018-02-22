@@ -2,7 +2,7 @@
   "name": "my-glitch-app",
   "version": "0.0.1",
   "description": "What am I about?",
-  "main": "server.js",
+  "main": "mybot.js",
   "scripts": {
     "start": "node mybot.js"
   },
@@ -11,11 +11,12 @@
     "express": "^4.16.2",
     "fast-html-parser": "^1.0.1",
     "figlet": "^1.2.0",
-    "klasa": "^0.4.0",
+    "klasa": "github:dirigeants/klasa",
     "moment": "^2.20.1",
     "moment-duration-format": "^2.2.2",
     "pixabay-api": "^1.0.4",
-    "textanary": "^4.0.0"
+    "textanary": "^4.0.0",
+    "safe-eval": "^0.3.0"
   },
   "engines": {
     "node": "8.x"

@@ -14,16 +14,24 @@ module.exports = class extends Command {
             requiredSettings: [],
             description: 'Reverses a string',
             quotedStringSupport: false,
-            usage: '<txt|bin> <stringToConvert:str>',
+            usage: '<stringToConvert:str>',
             usageDelim: ", ",
             extendedHelp: 'No extended help available.'
         });
     }
+  
+    check(str) {
+      const num = /^[0-1 ]*$/gm;
+      if (str.match(num)) {
+       return true;
+      }
+      return false;
+    }
 
-    async run(msg, [cmd, txt]) {
+    async run(msg, [txt]) {
       let bin;
-      if (cmd == "txt") {
-        bin = textanary({to: "text", data: txt});
+      if (this.check(txt)) {
+        bin = textanary({to: "text", data: txt.split(" ").join("")});
       } else {
         bin = textanary({to: "binary", data: txt});
       }

@@ -18,7 +18,7 @@ setInterval(() => {
 /* const { ShardingManager } = require('discord.js');
 const sharder = new ShardingManager(`${process.cwd()}/mybot.js`, { totalShards: 2 });
 sharder.on('launch', shard => console.log(`launched ${shard.id}`));
-sharder.spawn(2); 
+sharder.spawn(2); */
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 new Client({
@@ -27,7 +27,7 @@ new Client({
     },
     prefix: '-',
     cmdEditing: true,
-    typing: true,
+    typing: false,
     readyMessage: (client) => `${client.user.tag}, Ready to serve ${client.guilds.size} guilds and ${client.users.size} users`,
     console: {
       useColors: false,
