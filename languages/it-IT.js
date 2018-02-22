@@ -71,7 +71,7 @@ module.exports = class extends Language {
 				'',
 				'Alcune funzionalità che Klasa include:',
 				'• Tempi di caricamento ridotti grazie al support di ES7 (Async/Await).',
-				'• Configurazioen per-server che può essere estesa dal tuo codice.',
+				'• Configurazione per-server che può essere estesa dal tuo codice.',
 				'• Sistema di comandi personalizzabili con analisi dell\'utilizzo automatizzato e moduli di facile utilizzo per il ricaricamento e scaricamento.',
 				'• "Monitor" che possono controllare e reagire ai messaggi, come un evento di un messaggio normale (Filtri per palore volgari, Protezione da Spam, ecc).',
 				'• "Inibitori" che possono prevenire l\'esecuzione di comandi in base a un set di parametri (Permessi, Blacklist, ecc).',

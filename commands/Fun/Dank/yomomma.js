@@ -12,13 +12,13 @@ module.exports = class extends Command {
 	}
 
 	async run(msg) {
-		const res = await request.get("http://api.yomomma.info").then(data => JSON.parse(data.text));
-		const embed = new discord.MessageEmbed()
+		const res = await snekfetch.get("http://api.yomomma.info").then(data => JSON.parse(data.text));
+		const embed = new this.client.methods.Embed()
 			.setColor("#e88020")
 			.setTitle("📢 **Yomomma joke**")
 			.setDescription(`*${res.joke}*`)
 			.setTimestamp()
-		return msg.channel.send(embed);
+		return msg.sendEmbed(embed);
 	}
 
 };

@@ -10,11 +10,13 @@
     "canvas": "^1.6.9",
     "discord.js": "github:hydrabolt/discord.js",
     "express": "^4.16.2",
+    "fast-html-parser": "^1.0.1",
     "figlet": "^1.2.0",
     "klasa": "^0.4.0",
     "moment": "^2.20.1",
     "moment-duration-format": "^2.2.2",
-    "pixabay-api": "^1.0.4"
+    "pixabay-api": "^1.0.4",
+    "textanary": "^4.0.0"
   },
   "engines": {
     "node": "8.x"
