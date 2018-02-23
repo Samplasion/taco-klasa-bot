@@ -12,8 +12,16 @@ module.exports = class extends Command {
 	}
 
 	async run(msg, [illegal]) {
-		return msg.channel.sendFile(`https://storage.googleapis.com/is-now-illegal.appspot.com/gifs/${illegal.toUpperCase()}.gif`, `${illegal.toUpperCase()}.gif`)
-      .catch(msg.sendMessage("Trump has decided not to make \"" + illegal.toUpperCase() + "\"illegal."));
+    try {
+      const embed = new this.client.methods.Embed()
+        .setTitle("Trump has decided to make \"" + illegal.toUpperCase() + "\" illegal.")
+        .setURL(`https://storage.googleapis.com/is-now-illegal.appspot.com/gifs/${illegal.toUpperCase()}.gif`)
+        .setImage(`https://storage.googleapis.com/is-now-illegal.appspot.com/gifs/${illegal.toUpperCase()}.gif`)
+        .setColor("#C5C7A2")
+      return msg.sendEmbed(embed);
+    } catch (e) {
+      msg.sendMessage("Trump has decided not to make \"" + illegal.toUpperCase() + "\" illegal.")
+    }
 	}
 
 };

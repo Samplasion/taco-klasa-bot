@@ -4,11 +4,12 @@ module.exports = class extends Command {
 
     constructor(...args) {
         super(...args, {
+            name: 'yourCommandName',
             enabled: true,
             runIn: ['text', 'dm', 'group'],
             cooldown: 0,
             aliases: [],
-            permLevel: 10,
+            permLevel: 0,
             botPerms: [],
             requiredSettings: [],
             description: '',
@@ -21,7 +22,6 @@ module.exports = class extends Command {
 
     async run(msg, [...params]) {
         // This is where you place the code you want to run for your command
-      msg.channel.send("bar!")
     }
 
     async init() {

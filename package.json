@@ -7,17 +7,22 @@
     "start": "node mybot.js"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "cowsay": "^1.2.1",
     "discord.js": "github:hydrabolt/discord.js",
     "express": "^4.16.2",
     "fast-html-parser": "^1.0.1",
     "figlet": "^1.2.0",
+    "image-downloader": "^3.3.0",
     "klasa": "github:dirigeants/klasa",
     "moment": "^2.20.1",
     "moment-duration-format": "^2.2.2",
     "pixabay-api": "^1.0.4",
     "safe-eval": "^0.3.0",
-    "textanary": "^4.0.0"
+    "sherlockjs": "^1.3.7",
+    "sleep": "^5.1.1",
+    "textanary": "^4.0.0",
+    "to-markdown": "^3.1.1"
   },
   "engines": {
     "node": "8.x"
