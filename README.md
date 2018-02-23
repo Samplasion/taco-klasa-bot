@@ -1,5 +1,8 @@
-Welcome to the Glitch BETA
+taco-klasa-bot
 =========================
+
+[![](https://travis-ci.org/Samplasion/taco-klasa-bot.svg?branch=glitch)](https://travis-ci.org/Samplasion/taco-klasa-bot#)
+[![](https://discordapp.com/api/guilds/410854239020253195/embed.png)](https://discord.gg/XdPUzbv)
 
 Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
 

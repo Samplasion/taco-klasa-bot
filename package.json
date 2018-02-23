@@ -7,6 +7,7 @@
     "start": "node mybot.js"
   },
   "dependencies": {
+    "cowsay": "^1.2.1",
     "discord.js": "github:hydrabolt/discord.js",
     "express": "^4.16.2",
     "fast-html-parser": "^1.0.1",
@@ -15,8 +16,8 @@
     "moment": "^2.20.1",
     "moment-duration-format": "^2.2.2",
     "pixabay-api": "^1.0.4",
-    "textanary": "^4.0.0",
-    "safe-eval": "^0.3.0"
+    "safe-eval": "^0.3.0",
+    "textanary": "^4.0.0"
   },
   "engines": {
     "node": "8.x"
