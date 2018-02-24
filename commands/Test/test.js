@@ -4,7 +4,6 @@ module.exports = class extends Command {
 
     constructor(...args) {
         super(...args, {
-            // name: 'yourCommandName',
             enabled: true,
             runIn: ['text', 'dm', 'group'],
             cooldown: 0,
