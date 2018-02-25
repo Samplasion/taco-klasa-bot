@@ -24,10 +24,10 @@ module.exports = class extends Command {
 			return msg.sendMessage(info, { code: 'asciidoc' });
 		}
     const display = new RichDisplay(new this.client.methods.Embed()
-      .setColor(0x673AB7)
+      .setColor(msg.guild.me.roles.highest.color || 0x673AB7)
       .setAuthor(this.client.user.username, this.client.user.avatarURL())
       .setTitle('Help')
-      .setDescription('Scroll between "helps" using the provided reaction emotes.')
+      .setDescription('Scroll between categories and sub-categories using the provided reaction emotes.')
     );
 		const help = await this.buildHelp(msg);
 		const categories = Object.keys(help);
@@ -42,10 +42,10 @@ module.exports = class extends Command {
       }
 			// helpMessage.push('```\n\u200b');
 		}
-    return display.run(await msg.sendMessage('Loading...'));
-		return msg[method].send(helpMessage, { split: { char: '\u200b' } })
+    return display.run(await msg.sendMessage('Loading...'), { filter: (reaction, user) => user == msg.author });
+		/* return msg[method].send(helpMessage, { split: { char: '\u200b' } })
 			.then(() => { if (msg.channel.type !== 'dm' && this.client.user.bot) msg.sendMessage(msg.language.get('COMMAND_HELP_DM')); })
-			.catch(() => { if (msg.channel.type !== 'dm' && this.client.user.bot) msg.sendMessage(msg.language.get('COMMAND_HELP_NODM')); });
+			.catch(() => { if (msg.channel.type !== 'dm' && this.client.user.bot) msg.sendMessage(msg.language.get('COMMAND_HELP_NODM')); }); */
 	}
 
 	async buildHelp(msg) {

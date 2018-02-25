@@ -4,7 +4,7 @@ module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
-			description: 'Rings a bell on the server blaming the mentioned person.',
+			description: 'Returns a list of guilds the bot\'s on.',
 			usage: '',
 			permLevel: 10,
 		});

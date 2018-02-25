@@ -7,7 +7,7 @@ module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
-			aliases: ['ev'],
+			aliases: [],
 			permLevel: 0,
 			guarded: true,
 			description: 'Solves a math expreession.',

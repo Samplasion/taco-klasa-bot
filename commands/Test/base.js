@@ -9,7 +9,7 @@ module.exports = class extends Command {
             runIn: ['text', 'dm', 'group'],
             cooldown: 0,
             aliases: [],
-            permLevel: 0,
+            permLevel: 10,
             botPerms: [],
             requiredSettings: [],
             description: '',

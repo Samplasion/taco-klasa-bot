@@ -5,7 +5,7 @@ module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
-      aliases: ["ra", "revascii"],
+      aliases: ["ra", "revascii", "iicsa"],
 			description: 'Creates a reverse ascii banner from the string you supply.',
 			usage: '<banner:str>'
 		});
