@@ -10,7 +10,8 @@ module.exports = class extends Command {
 			permLevel: 10,
 			guarded: true,
 			description: 'Evaluates arbitrary Javascript. Reserved for bot owner.',
-			usage: '<expression:str>'
+			usage: '<expression:str>',
+      extendedHelp: (msg) => msg.language.get('COMMAND_EVAL_EXTENDEDHELP')
 		});
 	}
 
