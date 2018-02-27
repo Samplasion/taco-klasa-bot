@@ -22,7 +22,7 @@ module.exports = class extends Command {
       let path = res.data.path.replace('/i/', '');
       const embed = new this.client.methods.Embed()
         .setColor(msg.guild.me.roles.highest.color || this.rC)
-        .setTitle(`${msg.member.nickname} smugged`)
+        .setTitle(`${msg.member.displayName} smugged`)
         .setImage(`https://cdn.ram.moe/${path}`)
       return msg.sendEmbed(embed);
     }

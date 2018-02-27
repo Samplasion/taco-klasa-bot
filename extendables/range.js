@@ -6,7 +6,7 @@ module.exports = class extends Extendable {
         super(...args, ['Message'], {
             name: 'range',
             enabled: true,
-            klasa: false
+            klasa: true
         });
     }
 

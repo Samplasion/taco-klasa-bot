@@ -6,12 +6,6 @@ module.exports = class extends Extendable {
 		super(...args, ['Message']);
 	}
 
-  /**
-  * The "prompt" message extention
-  * @async
-  * @param {string} content - The content of the prompt.
-  * @param {Object} options - The options of the prompt (optional).
-  */
 	async extend(content, options) {
 		const message = await this.sendMessage(content, options);
 		if (this.channel.permissionsFor(this.guild.me).has('ADD_REACTIONS')) return awaitReaction(this, message);

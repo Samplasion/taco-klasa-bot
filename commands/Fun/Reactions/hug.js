@@ -14,15 +14,16 @@ module.exports = class extends Command {
 
     async run(msg) {
       const someone = msg.mentions.members.first() != undefined ? msg.mentions.members.first() : msg.member;
-      this.getImage(msg, "Hug", someone)
+      this.getImage(msg, "hug", someone)
     }
     
     async getImage(msg, type, user) {
       let res = await axios.get('https://rra.ram.moe/i/r', { params: { "type": type } });
+      // return console.log(res)
       let path = res.data.path.replace('/i/', '');
       const embed = new this.client.methods.Embed()
         .setColor(msg.guild.me.roles.highest.color || this.rC)
-        .setTitle(`${msg.member.nickname} just hugged ${user.nickname}`)
+        .setTitle(`${msg.member.displayName} just hugged ${user.displayName}`)
         .setImage(`https://cdn.ram.moe/${path}`)
       return msg.sendEmbed(embed);
     }

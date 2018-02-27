@@ -8,7 +8,7 @@ module.exports = class extends Command {
 			guarded: true,
 			description: (msg) => msg.language.get('COMMAND_STATS_DESCRIPTION')
 		});
-    this.botVersion = "1.3"
+    this.botVersion = "1.5"
 	}
 
 	async run(msg) {
