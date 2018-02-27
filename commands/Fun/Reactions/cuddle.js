@@ -18,7 +18,7 @@ module.exports = class extends Command {
     }
     
     async getImage(msg, type, user) {
-      let res = await axios.get('https://rra.ram.moe/i/r', {params: {"type": type}});
+      let res = await axios.get('https://rra.ram.moe/i/r', { params: { "type": type } });
       let path = res.data.path.replace('/i/', '');
       const embed = new this.client.methods.Embed()
         .setColor(msg.guild.me.roles.highest.color || this.rC)

@@ -6,14 +6,15 @@ module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
             // name: 'yourCommandName',
-            description: 'OwO',
+            description: 'Hug someone',
+            usage: '[someone:mention]',
         });
       this.randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
     }
 
     async run(msg) {
       const someone = msg.mentions.members.first() != undefined ? msg.mentions.members.first() : msg.member;
-      this.getImage(msg, "owo", someone)
+      this.getImage(msg, "Hug", someone)
     }
     
     async getImage(msg, type, user) {
@@ -21,7 +22,7 @@ module.exports = class extends Command {
       let path = res.data.path.replace('/i/', '');
       const embed = new this.client.methods.Embed()
         .setColor(msg.guild.me.roles.highest.color || this.rC)
-        .setTitle(`${msg.member.nickname}, owo`)
+        .setTitle(`${msg.member.nickname} just hugged ${user.nickname}`)
         .setImage(`https://cdn.ram.moe/${path}`)
       return msg.sendEmbed(embed);
     }
