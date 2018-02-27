@@ -8,6 +8,7 @@ module.exports = class extends Command {
 			guarded: true,
 			description: (msg) => msg.language.get('COMMAND_STATS_DESCRIPTION')
 		});
+    this.botVersion = "1.3"
 	}
 
 	async run(msg) {
@@ -29,7 +30,7 @@ module.exports = class extends Command {
 			/*(users || this.client.users.size).toLocaleString()*/this.client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(),
 			(guilds || this.client.guilds.size).toLocaleString(),
 			(channels || this.client.channels.size).toLocaleString(),
-			klasaVersion, discordVersion, process.version, msg
+			klasaVersion, discordVersion, process.version, this.botVersion, msg
 		));
 	}
 

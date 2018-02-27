@@ -10,9 +10,9 @@ module.exports = class extends Command {
             runIn: ['text', 'dm', 'group'],
             cooldown: 5,
             aliases: [],
-            permLevel: 10,
+            permLevel: 0,
             requiredSettings: [],
-            description: '',
+            description: 'Shows the bot\'s info',
             usage: '<dbl|blspace> <user:mention>',
             usageDelim: " ",
             extendedHelp: 'No extended help available.'

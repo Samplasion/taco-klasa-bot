@@ -71,10 +71,10 @@ module.exports = class extends Language {
 				'The --showHidden flag will enable the showHidden option in util.inspect.',
 				'If the output is too large, it\'ll send the output as a file, or in the console if the bot does not have the ATTACH_FILES permission.'
 			].join('\n'),
-			COMMAND_EVAL_ERROR: (time, output, type) => `**Error**:${output}\n**Type**:${type}\n${time}`,
-			COMMAND_EVAL_OUTPUT: (time, output, type) => `**Output**:${output}\n**Type**:${type}\n${time}`,
-			COMMAND_EVAL_SENDFILE: (time, type) => `Output was too long... sent the result as a file.\n**Type**:${type}\n${time}`,
-			COMMAND_EVAL_SENDCONSOLE: (time, type) => `Output was too long... sent the result to console.\n**Type**:${type}\n${time}`,
+			COMMAND_EVAL_ERROR: (time, output, type) => `${/*}**Error**:${*/""}${output}\n**Type**:${type}\n${time}`,
+			COMMAND_EVAL_OUTPUT: (time, output, type) => `${/*}**Output**:${*/""}${output}\n**Type**:${type}\n${time}`,
+			COMMAND_EVAL_SENDFILE: (time, type) => `The output was too long... sent the result as a file.\n**Type**:${type}\n${time}`,
+			COMMAND_EVAL_SENDCONSOLE: (time, type) => `The output was too long... sent the result to console.\n**Type**:${type}\n${time}`,
 			COMMAND_UNLOAD: (type, name) => `✅ Unloaded ${type}: ${name}`,
 			COMMAND_UNLOAD_DESCRIPTION: 'Unloads the klasa piece.',
 			COMMAND_TRANSFER_ERROR: '❌ That file has been transfered already or never existed.',
@@ -101,8 +101,8 @@ module.exports = class extends Language {
 					'The above link is generated requesting the minimum permissions required to use every command currently.',
 					'I know not all permissions are right for every server, so don\'t be afraid to uncheck any of the boxes.',
 					'If you try to use a command that requires more permissions than the bot is granted, it will let you know.'
-				].join(' ')),
-				'Please file an issue at <https://github.com/dirigeants/klasa> if you find any bugs.'
+				].join(' '))/*,
+				'Please file an issue at <https://github.com/dirigeants/klasa> if you find any bugs.'*/
 			],
 			COMMAND_INVITE_DESCRIPTION: 'Displays the join server link of the bot.',
 			COMMAND_INFO: [
@@ -147,7 +147,7 @@ module.exports = class extends Language {
 			COMMAND_CONF_SERVER: (key, list) => `**Server Configuration${key}**\n${list}`,
 			COMMAND_CONF_USER_DESCRIPTION: 'Define per-user configuration.',
 			COMMAND_CONF_USER: (key, list) => `**User Configuration${key}**\n${list}`,
-			COMMAND_STATS: (memUsage, uptime, users, servers, channels, klasaVersion, discordVersion, processVersion, msg) => [
+			COMMAND_STATS: (memUsage, uptime, users, servers, channels, klasaVersion, discordVersion, processVersion, botVersion, msg) => [
 				'= STATISTICS =',
 				'',
 				`• Mem Usage  :: ${memUsage} MB`,
@@ -158,6 +158,7 @@ module.exports = class extends Language {
 				`• Klasa      :: v${klasaVersion}`,
 				`• Discord.js :: v${discordVersion}`,
 				`• Node.js    :: ${processVersion}`,
+				`• Bot        :: v${botVersion}`,
 				this.client.options.shardCount ? `• Shard      :: ${((msg.guild ? msg.guild.shardID : msg.channel.shardID) || this.client.options.shardId) + 1} / ${this.client.options.shardCount}` : ''
 			],
 			COMMAND_STATS_DESCRIPTION: 'Provides some details about the bot and stats.',

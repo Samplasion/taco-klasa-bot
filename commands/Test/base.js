@@ -22,6 +22,7 @@ module.exports = class extends Command {
 
     async run(msg, [...params]) {
         // This is where you place the code you want to run for your command
+      msg.channel.send("<:dblMod:401724520806875139>")
     }
 
     async init() {

@@ -85,6 +85,8 @@ module.exports = class extends Language {
 			],
 			COMMAND_HELP_DM: '📥 | La lista di comandi a cui hai accesso è stata inviata nei tuoi messaggi privati.',
 			COMMAND_HELP_NODM: '❌ | I tuoi messaggi privati sono disabilitati, non ho potuto inviare la lista dei comandi nei tuoi messaggi privati.',
+			COMMAND_HELP_USAGE: (usage) => `uso :: ${usage}`,
+      COMMAND_HELP_EXTENDED: "Aiuto esteso ::",
 			COMMAND_ENABLE: (type, name) => `+ Abilitato con successo il ${type}: ${name}`,
 			COMMAND_DISABLE: (type, name) => `+ Disabilitato con successo il ${type}: ${name}`,
 			COMMAND_DISABLE_WARN: 'Probabilmente non vuoi disabilitare questo, dato che non saresti più in grado di eseguire un comando per riabilitarlo',

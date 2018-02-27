@@ -6,7 +6,7 @@ module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
-			aliases: ['ev'],
+			aliases: [/*'ev'*/],
 			permLevel: 10,
 			guarded: true,
 			description: 'Evaluates arbitrary Javascript. Reserved for bot owner.',
