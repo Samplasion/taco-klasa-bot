@@ -39,10 +39,10 @@ module.exports = class extends Command {
       break;
     case "role":
     case "roles":
-      msg.channel.send(`**Guild roles**:\n${msg.guild.roles.map(g=>`- \`${g.name}\``).sort().join('\n')}`)
+      msg.channel.send(`**Server roles**:\n${msg.guild.roles.map(g=>`- \`${g.name}\``).sort().join('\n')}`)
       break;
     case "role-ids":
-      msg.channel.send(`**Guild roles**:\n${msg.guild.roles.map(g=>`- \`${g.name} (${g.id})\``).sort().join('\n')}`)
+      msg.channel.send(`**Server roles**:\n${msg.guild.roles.map(g=>`- \`${g.name} (${g.id})\``).sort().join('\n')}`)
       break;
     default:
       const serverInfo = new this.client.methods.Embed()
@@ -55,7 +55,10 @@ module.exports = class extends Command {
         .addField('❯ Explicit Filter', this.filterLevels[msg.guild.explicitContentFilter], true)
         .addField('❯ Verification Level', this.verificationLevels[msg.guild.verificationLevel], true)
         .addField('❯ Owner', msg.guild.owner ? msg.guild.owner.user.tag : 'None', true)
-        .addField('❯ Members', msg.guild.memberCount, true);
+        .addField('❯ Members', msg.guild.memberCount, true)
+        .addField('❯ Roles', msg.guild.roles.map(r => r.name).join(", "), true)
+        .addField('❯ Emojis', msg.guild.emojis.map(e => `${e.toString()}`).join(" "), true)
+//        .addField(msg.guild.emojis.map(e => `${e.toString()}`).join(' '))
       return msg.sendEmbed(serverInfo);
     }
 	}

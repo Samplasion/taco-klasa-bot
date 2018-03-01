@@ -8,14 +8,17 @@ module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
             description: 'I don\'t know what this is. Ask Andrew',
-            cooldown: 3000,
+            cooldown: 3,
         });
     }
 
     async run(msg, [...params]) {
-      const range = this.range(100, 1);
-      const loto = range.random();
-      if(loto == 77) return msg.reply("you won!")
+      const num = msg.guild.configs.lotoWinNum || 77,
+            top = msg.guild.configs.lotoWinMax || 100,
+            object = msg.guild.configs.lotoWin || "Nothing"
+      const range = this.range(top, 1);
+      const loto = range.random(); // console.log(loto);
+      if(loto == num) return msg.reply(`you won \`${object}\`!`)
       return msg.reply("you lose!")
     }
   

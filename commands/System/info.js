@@ -16,7 +16,7 @@ module.exports = class extends Command {
     const randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
     const message = msg;
     const { body } = await snekfetch.get(`https://discordbots.org/api/bots/${this.client.user.id}/`);
-    const prefix = message.guild ? message.guild.settings.prefix : "+"
+    const prefix = message.guild ? message.guild.configs.prefix : "+"
     const embed = new MessageEmbed()
       .setColor(message.guild.me.roles.highest.color || randomColor)
       .addField(`**${this.client.user.tag}**`, `${body.shortdesc}`)
