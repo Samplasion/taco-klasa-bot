@@ -84,11 +84,12 @@ Y
         if (game.status() != "draw") {
           if (game.status() == "X") {
             msg.reply(`X (you) won!`);
+            this.points(msg, msg.author, "add");
           } else {
             msg.reply(`O (the AI) won!`);
           }
         } else {
-          msg.reply(`It's a draw!`);
+          msg.reply(`it's a draw!`);
         }
         return msg.channel.send(`\`\`\`${game.ascii()}\`\`\``); // check board
       }
@@ -100,14 +101,40 @@ Y
         if (game.status() != "draw") {
           if (game.status() == "X") {
             msg.reply(`X (you) won!`);
+            this.points(msg, msg.author, "add");
           } else {
             msg.reply(`O (the AI) won!`);
           }
         } else {
-          msg.reply(`It's a draw!`);
+          msg.reply(`it's a draw!`);
         }
         return msg.channel.send(`\`\`\`${game.ascii()}\`\`\``); // check board
       }
+    }
+  
+    async points(msg, user, action) {
+/*    if (!row) {
+        await this.client.gateways.users.schema.add('money', { type: 'integer', configurable: false, default: 0})
+      }  */
+      let points = user.configs.money;
+      switch (action) {
+        case "add":
+          points++;
+          break;
+        case "remove":
+          Math.max(0, points--);
+          break;
+        case "reset":
+          points = 0;
+          break;
+        case "get":
+          msg.sendEmbed(new this.client.methods.Embed()
+                          .setColor(msg.guild.me.roles.highest.color || this.randomColor)
+                          .setDescription(`${msg.member.displayName}, you've got ${msg.guild.configs.money ? msg.guild.configs.money : "$"}${points.toLocaleString()}`))
+          // msg.reply("You've got " + points + " points.")
+        // no default
+      }
+      user.configs.money = points;
     }
 
     async init() {

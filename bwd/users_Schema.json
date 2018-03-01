@@ -1,1 +1,1 @@
-{"type":"Folder","city":{"type":"string","array":false,"default":null,"min":null,"max":null,"sql":"TEXT","configurable":true}}
+{"type":"Folder","money":{"type":"integer","array":false,"default":0,"min":null,"max":null,"sql":"INTEGER DEFAULT 0","configurable":false},"city":{"type":"string","array":false,"default":null,"min":null,"max":null,"sql":"TEXT","configurable":true}}

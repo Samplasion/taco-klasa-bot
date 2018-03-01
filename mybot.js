@@ -21,7 +21,7 @@ sharder.on('launch', shard => console.log(`launched ${shard.id}`));
 sharder.spawn(2); */
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-const permissionLevels = new PermissionLevels()
+/*const permissionLevels = new PermissionLevels()
 //Optionally you can pass a number to set a custom number of permission levels. It is not advised however, as internal commands expect 10 to be the highest permission level. Modifying away from 10 without further modification of all core commands, could put your server at risk of malicious users using the core eval command.
     .addLevel(0, false, () => true)
     // everyone can use these commands
@@ -43,7 +43,7 @@ const permissionLevels = new PermissionLevels()
     .addLevel(9, true, (client, msg) => msg.author === client.owner)
     // Allows the Bot Owner to use any lower commands, and causes any command with a permission level 9 or lower to return an error if no check passes.
     .addLevel(10, false, (client, msg) => msg.author === client.owner);
-    // Allows the bot owner to use Bot Owner only commands, which silently fail for other users.
+    // Allows the bot owner to use Bot Owner only commands, which silently fail for other users.*/
 
 new Client({
     clientOptions: {

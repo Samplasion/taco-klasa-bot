@@ -65,6 +65,31 @@ module.exports = class extends Command {
       this.client.hangman.status[msg.author.id] = game;
       // console.log(game);
     }
+  
+    async points(msg, user, action) {
+/*    if (!row) {
+        await this.client.gateways.users.schema.add('money', { type: 'integer', configurable: false, default: 0})
+      }  */
+      let points = user.configs.money;
+      switch (action) {
+        case "add":
+          points++;
+          break;
+        case "remove":
+          Math.max(0, points--);
+          break;
+        case "reset":
+          points = 0;
+          break;
+        case "get":
+          msg.sendEmbed(new this.client.methods.Embed()
+                          .setColor(msg.guild.me.roles.highest.color || this.randomColor)
+                          .setDescription(`${msg.member.displayName}, you've got ${msg.guild.configs.money ? msg.guild.configs.money : "$"}${points.toLocaleString()}`))
+          // msg.reply("You've got " + points + " points.")
+        // no default
+      }
+      user.configs.money = points;
+    }
 
     async init() {
       this.client.hangman = {

@@ -1,25 +1,31 @@
 const { Command } = require('klasa');
-Array.prototype.random = function() {
-  return this[Math.floor(Math.random() * this.length)]
-};
 
 module.exports = class extends Command {
 
     constructor(...args) {
         super(...args, {
-            description: 'I don\'t know what this is. Ask Andrew',
-            cooldown: 3,
+            // name: 'yourCommandName',
+            enabled: true,
+            runIn: ['text'],
+            cooldown: 0,
+            aliases: [],
+            permLevel: 10,
+            botPerms: [],
+            requiredSettings: [],
+            description: '',
+            quotedStringSupport: false,
+            usage: '',
+            usageDelim: undefined,
+            extendedHelp: 'No extended help available.'
         });
+      this.randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
+      // this.provider = "json";
     }
 
     async run(msg, [...params]) {
-      const num = msg.guild.configs.lotoWinNum || 77,
-            top = msg.guild.configs.lotoWinMax || 100,
-            object = msg.guild.configs.lotoWin || "Nothing"
-      const range = this.range(top, 1);
-      const loto = range.random(); // console.log(loto);
-      if(loto == num) return msg.reply(`you won \`${object}\`!`)
-      return msg.reply("you lose!")
+      msg.sendEmbed(new this.client.methods.Embed()
+                          .setColor(msg.guild.me.roles.highest.color || this.randomColor)
+                          .setDescription(`${msg.member.displayName}, you've got ${msg.guild.configs.money ? msg.guild.configs.money : "$"}${msg.author.configs.money.toLocaleString()}`))
     }
   
     async points(msg, user, action) {
@@ -40,19 +46,12 @@ module.exports = class extends Command {
         case "get":
           msg.sendEmbed(new this.client.methods.Embed()
                           .setColor(msg.guild.me.roles.highest.color || this.randomColor)
+                          .setTitle("Your Money")
                           .setDescription(`${msg.member.displayName}, you've got ${msg.guild.configs.money ? msg.guild.configs.money : "$"}${points.toLocaleString()}`))
           // msg.reply("You've got " + points + " points.")
         // no default
       }
       user.configs.money = points;
-    }
-  
-    range(max, min = 0) {
-        const returned = []
-        for (var i = min; i <= max; i++) {
-          returned.push(i)
-        }
-        return returned
     }
 
     async init() {
