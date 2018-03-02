@@ -17,7 +17,7 @@ module.exports = class extends Command {
     const randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
 		if (msg.channel.postable === false) throw 'The selected channel is not postable.';
 		return msg.channel.send(new this.client.methods.Embed()
-                              .setColor(message.guild.me.roles.highest.color || randomColor)
+                              .setColor(msg.guild.me.roles.highest.color || randomColor)
                               .setDescription(message)
                               .setFooter(`Requested by ${msg.member ? msg.member.displayName : msg.author.username}`, msg.author.displayAvatarURL()));
 	}
