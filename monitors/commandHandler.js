@@ -58,7 +58,7 @@ module.exports = class extends Monitor {
 			const results = this.client.options.regexPrefix.exec(msg.content);
 			if (results) return { length: results[0].length, regex: this.client.options.regexPrefix };
 		}
-		const prefix = msg.guildConfigs.prefix || this.client.options.prefix;
+		const prefix = msg.guildConfigs.prefix || this.client.options.prefix.toLowerCase();
 		if (Array.isArray(prefix)) {
 			for (let i = prefix.length - 1; i >= 0; i--) {
 				const testingPrefix = this.prefixes.get(prefix[i]) || this.generateNewPrefix(prefix[i]);
