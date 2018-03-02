@@ -17,8 +17,9 @@ module.exports = class extends Command {
             requiredSettings: [],
             description: '',
             quotedStringSupport: false, */
-            aliases: ["hang", "hman"],
-            usage: '<new|guess> [letter:str{1,1}]',
+            aliases: ["hang", "hman", "guess"],
+            runIn: ['text'],
+            usage: '[new] [letter:str{1,1}]',
             usageDelim: " ",
             extendedHelp: 'No extended help available.'
         });
@@ -29,11 +30,27 @@ module.exports = class extends Command {
         "destiny",
         "eris",
         "freshness",
-        "gas"
+        "gas",
+        "hierarchy",
+        "identifier",
+        "imagine",
+        "jamming",
+        "kamikaze",
+        "lovely",
+        "madness",
+        "nemesis",
+        "oasis",
+      ]
+      this.money = [
+        1,
+        2,
+        3,
+        4,
+        5
       ]
       this.options = {
-        maxAttempt: 10,
-        concealCharacter: '_'
+        maxAttempt: 15,
+        concealCharacter: '-'
       }
     }
 
@@ -44,57 +61,58 @@ module.exports = class extends Command {
         hangman.configure(this.options);
         var game = hangman.newGame(word);
         game.start()
-        msg.channel.send(`${"```"}${game.getConcealedPhrase()}${"```"}`);
+        msg.sendEmbed(new this.client.methods.Embed()
+                      .setColor(msg.guild.me.roles.highest.color || this.randomColor)
+                      .setAuthor(msg.member.displayName, msg.author.displayAvatarURL())
+                      .addField("Word", `${"```"}${game.getConcealedPhrase()}${"```"}`)
+//                    .addField("Attempts left", attempts, true)
+//                    .addField("Guesses", `${game.guesses.join(", ")}`, true)
+//                    .addField("Hits and Misses", `Hits: ${game.hits.join(", ") || "No hits"} | Misses: ${game.misses.join(", ") || "No misses"}`)
+                     )
+        // msg.channel.send(`${"```"}${game.getConcealedPhrase()}${"```"}`);
         this.client.hangman.word[msg.author.id] = word;
+        this.client.hangman.attempts[msg.author.id] = 5;
         return this.client.hangman.status[msg.author.id] = game;
       }
+      if (!this.client.hangman.attempts[msg.author.id]) this.client.hangman.attempts[msg.author.id] = 5;
+      let attempts = this.client.hangman.attempts[msg.author.id];
       if (!this.client.hangman.status[msg.author.id]) return msg.reply("start a game before guessing letters.")
       var game = this.client.hangman.status[msg.author.id];
-      if (!letter || letter == undefined || letter == "") throw 'You cannot guess anything';
+      if (!letter || letter == undefined || letter == "") throw 'You cannot guess nothing or something more than one letter';
       if (game.guesses.includes(letter)) return msg.reply("you've already tried that letter!");
-      await game.guess(letter);// console.log(game)
+      await game.guess(letter); // console.log(game);
+      if(game.misses.includes(letter)) attempts -= 1
+      if(attempts == 0) game.end("LOST")
       if(game.status == "WON") {
-        msg.reply("you won! The word was " + game.getConcealedPhrase())
-        delete this.client.hangman.status[msg.author.id]
+        const mon = this.money.random();
+        msg.reply("you won " + msg.guild.configs.money + mon + "! The word was: " + game.getConcealedPhrase())
+        delete this.client.hangman.status[msg.author.id];
+        return msg.author.configs.money += mon
       }
       if(game.status == "LOST") {
-        msg.reply("you lost! The word was " + this.client.hangman.word[msg.author.id])
-        delete this.client.hangman.status[msg.author.id]
+        msg.reply("you lost! The word was: " + this.client.hangman.word[msg.author.id])
+        delete this.client.hangman.status[msg.author.id];
+        return msg.author.configs.money = Math.max(0, msg.author.configs.money--)
       }
-      msg.channel.send(`${"```"}${game.getConcealedPhrase()}${"```"}`);
+      // msg.channel.send(`${"```"}${game.getConcealedPhrase()}${"```"}`);
+      msg.sendEmbed(new this.client.methods.Embed()
+                      .setColor(msg.guild.me.roles.highest.color || this.randomColor)
+                      .setAuthor(msg.member.displayName, msg.author.displayAvatarURL())
+                      .addField("Word", `${"```"}${game.getConcealedPhrase()}${"```"}`)
+                      .addField("Attempts left", attempts, true)
+                      .addField("Guesses", `${game.guesses.join(", ")}`, true)
+                      .addField("Hits and Misses", `Hits: ${game.hits.join(", ") || "No hits"} | Misses: ${game.misses.join(", ") || "No misses"}`)
+                    )
       this.client.hangman.status[msg.author.id] = game;
+      this.client.hangman.attempts[msg.author.id] = attempts;
       // console.log(game);
-    }
-  
-    async points(msg, user, action) {
-/*    if (!row) {
-        await this.client.gateways.users.schema.add('money', { type: 'integer', configurable: false, default: 0})
-      }  */
-      let points = user.configs.money;
-      switch (action) {
-        case "add":
-          points++;
-          break;
-        case "remove":
-          Math.max(0, points--);
-          break;
-        case "reset":
-          points = 0;
-          break;
-        case "get":
-          msg.sendEmbed(new this.client.methods.Embed()
-                          .setColor(msg.guild.me.roles.highest.color || this.randomColor)
-                          .setDescription(`${msg.member.displayName}, you've got ${msg.guild.configs.money ? msg.guild.configs.money : "$"}${points.toLocaleString()}`))
-          // msg.reply("You've got " + points + " points.")
-        // no default
-      }
-      user.configs.money = points;
     }
 
     async init() {
       this.client.hangman = {
         status: [],
         word: [],
+        attempts: [],
       }
     }
 

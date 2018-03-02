@@ -9,6 +9,7 @@ module.exports = class extends Command {
         super(...args, {
             description: 'I don\'t know what this is. Ask Andrew',
             cooldown: 3,
+            runIn: ['text'],
         });
     }
 
@@ -18,33 +19,13 @@ module.exports = class extends Command {
             object = msg.guild.configs.lotoWin || "Nothing"
       const range = this.range(top, 1);
       const loto = range.random(); // console.log(loto);
-      if(loto == num) return msg.reply(`you won \`${object}\`!`)
-      return msg.reply("you lose!")
-    }
-  
-    async points(msg, user, action) {
-/*    if (!row) {
-        await this.client.gateways.users.schema.add('money', { type: 'integer', configurable: false, default: 0})
-      }  */
-      let points = user.configs.money;
-      switch (action) {
-        case "add":
-          points++;
-          break;
-        case "remove":
-          Math.max(0, points--);
-          break;
-        case "reset":
-          points = 0;
-          break;
-        case "get":
-          msg.sendEmbed(new this.client.methods.Embed()
-                          .setColor(msg.guild.me.roles.highest.color || this.randomColor)
-                          .setDescription(`${msg.member.displayName}, you've got ${msg.guild.configs.money ? msg.guild.configs.money : "$"}${points.toLocaleString()}`))
-          // msg.reply("You've got " + points + " points.")
-        // no default
+      if(loto == num) {
+        const mon = this.range(5, 2).random()
+        msg.reply(`you won \`${object}\` and ${msg.guild.configs.money}${mon}!`)
+        return msg.author.configs.money += mon
       }
-      user.configs.money = points;
+      msg.author.configs.money = Math.max(0, msg.author.configs.money--)
+      return msg.reply("you lose!")
     }
   
     range(max, min = 0) {
