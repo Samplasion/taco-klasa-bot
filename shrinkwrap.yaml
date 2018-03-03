@@ -4,6 +4,7 @@ dependencies:
   cleverbot.io: 1.0.4
   cowsay: 1.2.1
   discord.js: github.com/hydrabolt/discord.js/HEAD
+  discordjs-prompt: 0.0.4
   express: 4.16.2
   fast-html-parser: 1.0.1
   figlet: 1.2.0
@@ -392,6 +393,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
+  /discordjs-prompt/0.0.4:
+    dev: false
+    resolution:
+      integrity: sha512-kXuyb2eoY7lkOoF6ZQQaVeFE86F0W3SI7T938v93nCYb8jaibgLFTg68hZ9jCqfv/t7fveQ76GLXdWwYrPTuWw==
   /dom-serializer/0.1.0:
     dependencies:
       domelementtype: 1.1.3
@@ -1806,6 +1811,7 @@ specifiers:
   cleverbot.io: ^1.0.4
   cowsay: ^1.2.1
   discord.js: 'github:hydrabolt/discord.js'
+  discordjs-prompt: ^0.0.4
   express: ^4.16.2
   fast-html-parser: ^1.0.1
   figlet: ^1.2.0
