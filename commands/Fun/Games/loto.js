@@ -22,9 +22,9 @@ module.exports = class extends Command {
       if(loto == num) {
         const mon = this.range(5, 2).random()
         msg.reply(`you won \`${object}\` and ${msg.guild.configs.money}${mon}!`)
-        return msg.author.configs.money += mon
+        return msg.author.configs.update("money", msg.author.configs.money += mon)
       }
-      msg.author.configs.money = Math.max(0, msg.author.configs.money--)
+      msg.author.configs.update("money", Math.max(0, msg.author.configs.money--))
       return msg.reply("you lose!")
     }
   

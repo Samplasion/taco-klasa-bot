@@ -87,12 +87,12 @@ module.exports = class extends Command {
         const mon = this.money.random();
         msg.reply("you won " + msg.guild.configs.money + mon + "! The word was: " + game.getConcealedPhrase())
         delete this.client.hangman.status[msg.author.id];
-        return msg.author.configs.money += mon
+        return msg.author.configs.update("money", msg.author.configs.money += mon)
       }
       if(game.status == "LOST") {
         msg.reply("you lost! The word was: " + this.client.hangman.word[msg.author.id])
         delete this.client.hangman.status[msg.author.id];
-        return msg.author.configs.money = Math.max(0, msg.author.configs.money--)
+        return msg.author.configs.update("money", Math.max(0, msg.author.configs.money--))
       }
       // msg.channel.send(`${"```"}${game.getConcealedPhrase()}${"```"}`);
       msg.sendEmbed(new this.client.methods.Embed()
