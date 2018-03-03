@@ -20,7 +20,7 @@ module.exports = class extends Command {
                           .setAuthor(msg.member.displayName, msg.author.displayAvatarURL())
                           .setTitle("Balance")
                           .setDescription(`${msg.member.displayName}, you've got ${msg.guild.configs.money}${msg.author.configs.money.toLocaleString()}`))
-      msg.author.configs.update("money", msg.author.configs.money)
+      await msg.author.configs.update("money", msg.author.configs.money)
     }
 
     async init() {

@@ -58,6 +58,9 @@ new Client({
     console: {
       useColors: false,
     },
+/*  gateways: {
+      users: { provider: 'level' }
+    }*/
 }).login(process.env.SECRET);
 /* 
   client.BugHook = new WebhookClient(process.env.BWH_ID, process.env.BWH_TOKEN);

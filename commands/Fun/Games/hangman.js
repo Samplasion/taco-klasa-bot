@@ -84,10 +84,10 @@ module.exports = class extends Command {
       if(game.misses.includes(letter)) attempts -= 1
       if(attempts == 0) game.end("LOST")
       if(game.status == "WON") {
-        const mon = this.money.random();
+        const mon = msg.author.configs.money + this.money.random();
         msg.reply("you won " + msg.guild.configs.money + mon + "! The word was: " + game.getConcealedPhrase())
         delete this.client.hangman.status[msg.author.id];
-        return msg.author.configs.update("money", msg.author.configs.money += mon)
+        return msg.author.configs.update("money", mon)
       }
       if(game.status == "LOST") {
         msg.reply("you lost! The word was: " + this.client.hangman.word[msg.author.id])
