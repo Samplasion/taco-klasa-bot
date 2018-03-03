@@ -52,6 +52,8 @@ new Client({
     prefix: '-',
     cmdEditing: true,
     typing: false,
+    cmdLogging: true,
+    cmdPrompt: true,
     readyMessage: (client) => `${client.user.tag}, Ready to serve ${client.guilds.size} guilds and ${/*client.users.size*/client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} users`,
     console: {
       useColors: false,

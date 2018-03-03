@@ -16,8 +16,8 @@ module.exports = class extends Command {
       let img = user ? user.avatarURL({ format: "png"}) : url ? url : msg.author.avatarURL({ format: "png"});
       Jimp.read(img).then(function(image) {
         Jimp.read("https://cdn.glitch.com/8c009d94-1f7e-464c-82c2-bccaf15cb6cd%2Fshit.png?1519997151120").then(function(image2) {
-          image.resize(76, 76);
-          image2.composite(image, 266, 730);
+          image.resize(96, 96);
+          image2.composite(image, 256, 720);
           image2.getBuffer(Jimp.MIME_PNG, (error, buffer) => {
             msg.channel.send({files: [{ name: 'shit.png', attachment: buffer }] });
           });
